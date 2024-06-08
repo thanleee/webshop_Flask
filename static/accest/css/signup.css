@@ -1,0 +1,240 @@
+
+
+
+* {
+    box-sizing : inherit ; 
+}
+/* 62.5% <--> 1rem = 10px 
+    100%$ <--> 1rem = 16px 
+*/
+html {
+    font-size: 62.5% ; 
+    line-height: 1.6rem ;
+    font-family : 'Roboto', sans-serif ; 
+    box-sizing : border-box ; 
+}
+
+.container{
+    margin-top: 148px;
+    width : 100% ; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8;
+    flex-direction: column;
+}
+.signup__header{
+    /* border: 1px solid #333 ;  */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100% ; 
+    height: 65px ;
+    position: relative;
+    border-bottom: 1px solid #ddd;
+}
+.signup__header::after{
+    content: "";
+    position: absolute;
+    bottom : 0 ;
+    border: 1px solid #333; 
+    width: 190px ; 
+    height: 0 ; 
+    background-color: black; 
+
+}
+.signup__header-title{
+    font-size: 2.2rem ; 
+    font-weight: 400;
+}
+.signup__connect{
+    height: 160px;
+    width: 100% ; 
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow:  1 1px 1px #e0e0e0;
+    border-bottom: 1px solid #ddd;
+
+    
+}
+.signup__connect-text1{
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-top: 25px ;
+}
+.btn__icon--face{
+    margin : 25px 0 25px 0 ; 
+    width: 217px ; 
+    height: 39px ;
+    background-color: #1877f2;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.btn__icon--face i{
+    font-size: 2rem;
+    color: white;
+}
+
+.signup__connect-text2{
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 25px ;
+}
+.signup__connect-text2--link{
+    font-size: 1.3rem;
+    font-weight: 700;
+    color:#333 ; 
+
+}
+.signup__connect-text2--link:hover ,
+.show:hover{
+     color: #7a748b;
+    text-decoration: none;
+}
+.signup__body{
+    margin:0 auto 162px 355px ;
+    border-right: 1px solid #999 ;
+    display: flex;
+
+}
+.signup__body-form{
+    width : 400px ; 
+    padding-right: 55px ;
+    margin-top: 44px ; 
+}
+.signup__body-email{
+        display: flex ;
+        flex-direction: column;
+}
+.signup__body-email-text{
+    
+}
+.text--form{
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+.input__text{
+    width: 346px ; 
+    height: 40px ;
+    margin: 15px 0 15px 0 ;
+    border: 1px solid #ddd ; 
+    outline: none;
+
+}
+.signup__body-confirm{
+    display: flex;
+}
+.signup__body-confirm--box{
+    height: 15px;
+    width: 15px ; 
+    border: 1px solid #999 ; 
+    margin-right: 8px;
+}
+.signup__body-confirm--box:hover{
+    border: 1px solid #333; 
+    cursor: pointer;
+
+}
+.chekbox{
+    font-size: 1.2rem;
+    margin: 1px 5px 0 0 ; 
+}
+.text-1{
+    font-size: 1.2rem;
+    margin-top: 1px;
+    margin-bottom:15px ;
+}
+.signup__body-password{
+
+}
+.signup__body-password-text{
+    display: block;
+}
+.signup__body-password-input{
+
+}
+.input__show{
+    display: flex;
+    margin: 15px 0 15px 0 ;
+
+}
+.signup__body-password-input{
+
+}
+.input{
+    width: 290px ; 
+    height: 40px ;
+    border: 1px solid #ddd ; 
+    outline: none;
+}
+.signup__body-password-input--show{
+
+}
+.input-a{
+    border:1px solid #ddd ;
+    border-left: none;
+    height: 40px ;
+    width:56px ; 
+    display: flex;
+    justify-content: center;
+    align-items: center;     
+    background-color: #efeeef;
+}
+
+.show{
+    color: #333 ;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+  
+.date__table{
+    display: flex;
+    width: 345px ; 
+    height: 31px ;
+    margin: 15px 0 15px 0 ;
+    background-color: #fff;
+    justify-content: space-between;
+}
+.date__day{
+     
+}
+.date{
+    display: flex;
+    align-items: center;
+    padding : 0 8px 0 8px ; 
+    border: 1px solid #ddd ; 
+    
+    width:115px ;
+    text-decoration: none;
+    color: #333;
+
+}
+
+.date--text{
+    width:116px ;
+    font-size: 1.2rem ; 
+}
+
+.btn--create{
+    background-color: #000000;
+    color : #fff ; 
+    width: 346px ; 
+    height: 40px ; 
+    margin-top: 10px ; 
+    font-size: 1.8rem;
+    font-weight: 300;
+}
+.btn--create:hover{
+    background-color: #333;
+    cursor: pointer;
+}
+.signup__body-img{
+    width: 682px ; 
+    height: 750px ;
+    
+}

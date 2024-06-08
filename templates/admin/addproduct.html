@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.button {
+    align-self: flex-start;
+}
+
+</style>
+<body>
+
+    <div class="container">
+        <h1>Add Product</h1>
+        <form method="POST" action="/addproduct" enctype="multipart/form-data">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            <label for="description">Description:</label><br>
+            <textarea id="description" name="description" required></textarea><br>
+            <label for="price">Price:</label><br>
+            <input type="number" id="price" name="price" required><br>
+            <label for="color">Color:</label><br>
+            <input type="text" id="color" name="color" required><br>
+            <label for="stock">Stock:</label><br>
+            <input type="number" id="stock" name="stock" required><br>
+            <label for="category_id">Category ID:</label><br>
+            <select id="category_id" name="category_id" required>
+                <option value="" disabled selected>Please select</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <!-- Add more category options as needed -->
+            </select><br>
+            <label for="size">Size:</label><br>
+            <input type="text" id="size" name="size" required><br>
+            <!-- <label for="total_goods_sold">Total Goods Sold:</label><br>
+            <input type="number" id="total_goods_sold" name="total_goods_sold" required><br> -->
+            <label for="image_1">Image 1:</label><br>
+            <input type="file" id="image_1" name="image_1" accept="image/*" required><br>
+            <label for="image_2">Image 2:</label><br>
+            <input type="file" id="image_2" name="image_2" accept="image/*" required><br>
+            <label for="discount">Discount:</label><br>
+            <input type="number" id="discount" name="discount" required><br>
+            <button type="submit" class="button">Add Product</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

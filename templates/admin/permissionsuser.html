@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/css/updateusermn.css">
+    <link rel="icon" href="images/logoboohoo.png">
+    <title>Permission</title>
+</head>
+
+<body>
+    <h1>Cấp quyền</h1>
+    {% if customerdata %}
+    <form action="{{ url_for('updateus', id=customerdata[0]) }}" method="POST">
+
+        <label for="customer_id">CustomerID:</label>
+        <input type="text" id="phone" name="customer_id" value="{{customerdata[0]}}" readonly><br><br>
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" value="{{customerdata[5]}}" readonly><br><br>
+
+        <label for="contact">Password:</label>
+        <input type="text" id="password" name="contact" value="{{customerdata[8]}}" readonly><br><br>
+
+        <label for="fname">Fname:</label>
+        <input type="text" id="fname" name="fname" value="{{customerdata[1]}}" readonly><br><br>
+
+        <label for="lname">Lname:</label>
+        <input type="text" id="lname" name="lname" value="{{customerdata[2]}}" readonly><br><br>
+
+        <label for="role">Role:</label>
+
+        <select id="role" name="role">
+            <option value="Customer" {% if customerdata[9]=='Customer' %} selected {% endif %}>Customer</option>
+            <option value="Sale" {% if customerdata[9]=='Sale' %} selected {% endif %}>Sale</option>
+            <option value="Manager" {% if customerdata[9]=='Manager' %} selected {% endif %}>Manager</option>
+        </select><br><br>
+
+
+
+        <button type="submit">Update</button>
+    </form> {% endif %}
+</body>
+
+</html>

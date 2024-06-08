@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .content2 {
+            width: 100%;
+            box-sizing: border-box;
+            /* Make sure padding is included in width */
+        }
+
+        .full-width {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .two-columns {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .container-history {
+            width: 100%;
+            max-width: 1535px;
+            /* Optional: Add max-width to limit width on larger screens */
+            border-collapse: collapse;
+            background-color: #fff;
+
+            overflow: hidden;
+            padding: 10px;
+        }
+
+        .header {
+            background-color: #333;
+            color: white;
+            margin: -10px;
+            margin-bottom: 0;
+        }
+
+        .row-history {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .code-column,
+        .status-column,
+        .price-column,
+        .action-column {
+            flex: 1;
+            padding: 0 10px;
+        }
+
+
+
+        .product-column {
+            flex: 3;
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .product-column ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .product-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            /* Add space between products */
+        }
+
+        .product-info img {
+            width: 50px;
+            /* Adjust image size */
+
+            margin-right: 20px;
+            /* Add space between image and detail */
+        }
+
+        .prodetail {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .namepro {
+
+            margin-bottom: 5px;
+            /* Add space between name and price */
+        }
+
+        .prodetail div {
+            margin: 6px 0;
+            /* Adjust spacing */
+        }
+
+        .total-price {
+            text-align: center;
+            color: #dc3545;
+        }
+
+        .action-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .action-buttons button {
+            margin-left: 10px;
+            padding: 8px 12px;
+            /* Adjust button size */
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .confirm-button {
+            background-color: #28a745;
+            max-width: 200px;
+            /* Green */
+        }
+
+        .cancel-button {
+            background-color: #dc3545;
+            max-width: 200px;
+        }
+
+        /* Add hover effect */
+        .action-buttons button:hover {
+            filter: brightness(90%);
+            /* Adjust brightness */
+        }
+    </style>
+</head>
+
+<body>
+    {% include "admin/headerAdmin.html" %}
+    <div class="content2">
+        <!-- <div class="full-width">ORDER HISTORY</div> -->
+        <div class="two-columns">
+            <div class="container-history">
+                <div class="header row-history">
+                    <div class="code-column">CODE - CUSID</div>
+
+                    <div class="product-column">PRODUCTS</div>
+                    <div class="status-column" style=" margin-left: -100px;">STATUS ORDER</div>
+                    <div class="price-column">TOTAL PRICE</div>
+                    <div class="action-column">ACTIONS</div>
+                </div>
+                <!-- Loop through order history data -->
+                {% for data in history_order %}
+                <div class="row-history">
+                    <div class="code-column">
+                        <div><a style="color: black;">{{ data['billID'] }} - {{
+                                data['cusID'] }}</a>
+                        </div>
+                    </div>
+                    <div class="product-column">
+                        <ul>
+                            <!-- Loop through products in each order -->
+                            {% for product in data['products'] %}
+                            <li class="product-info">
+                                <img src="../static/img/{{ product['image'] }}" alt="Product Image">
+                                <div class="prodetail">
+                                    <div class="namepro">{{ product['quantity'] }} x {{ product['nameProduct'] }}</div>
+                                    <div style="color: red;">${{ product['unitPrice'] }}</div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="status-column" style="color: green; margin-right: -50px;">{{ data['statusOrder'] }}
+                    </div>
+                    <div class="price-column total-price">${{ data['totalPrice'] }}</div>
+                    <div class="action-buttons">
+                        <a href="/confirmorder/{{ data['billID'] }}"> <button class="confirm-button"
+                                onclick="confirmOrder('{{ data['billID'] }}')">Xác nhận đơn
+                                hàng</button></a>
+                        <a href="/confircancelmorder/{{ data['billID'] }}"> <button class="cancel-button"
+                                onclick="confirmCancel('{{ data['billID'] }}')">Xác
+                                nhận
+                                hủy</button></a>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- End loop -->
+            </div>
+        </div>
+    </div>
+    <script>
+        function confirmOrder(billID) {
+            // Xử lý xác nhận đơn hàng
+            alert("Xác nhận đơn hàng có ID: " + billID);
+        }
+
+        function confirmCancel(billID) {
+            // Xử lý xác nhận hủy
+            alert("Xác nhận hủy đơn hàng có ID: " + billID);
+        }
+    </script>
+</body>
+
+</html>

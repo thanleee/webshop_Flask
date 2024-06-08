@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOHOO | Woments and Mens</title>
+
+
+    <link rel="icon" href="../static/img/logoboohoo.png">
+    <link rel="stylesheet" href="../static/css/style-head-women.css">
+    <link rel="stylesheet" href="../static/css/product_style.css">
+    <link rel="stylesheet" href="../static/css/style1.css">
+    <script src="https://kit.fontawesome.com/9d9613e72c.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="../static/css/cart.css">
+
+</head>
+
+<body>
+
+    {% include "head.html" %}
+    <hr style="border: 1px solid #ddd;">
+
+    <div class="product" style="background-color: #f8f8f8">
+        <div class="container">
+            <div class="row" style="
+                 border-bottom: 1px solid #e3e3e3;
+                 border-right: 1px solid #ddd;
+                 padding-right: 30px;
+                 margin-left: 80px;
+                 margin-right: 80px">
+                <div class="product-content-left row" style="width: 55%;
+
+                     margin-right: 10px">
+                    <div id="img-container" class=" product-content-left-pic1 " style="border-left: 1px solid #ddd;
+                         ">
+
+                        <img class=" img-content " src="../static/img/{{productdetail[10]}}" width="360px"
+                            height="560px">
+
+                    </div>
+
+                    <div class="product-content-left-pic2 img-container" style="border-right:  1px solid #ddd;
+                         ">
+                        <img class="img-content" src="../static/img/{{productdetail[11]}}" width="360px" height="560px">
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-content-right" style="margin-left: 20px;
+                     padding-top: 10px;
+                     margin-top: 0;">
+
+
+                    <div class=" product-content-right-img" style="display: none;">
+
+                        <img src="../static/img/{{productdetail[10]}}" width="50px" height="50px">
+
+                    </div>
+                    <div class="product-content-right-name">
+                        <h3 style="text-transform: uppercase;">{{productdetail[1]}}</h3>
+                    </div>
+                    <div class="product-content-right-price row">
+                        <p style="color: red;"> <strong>${{productdetail[3]}}</strong> </p>
+
+
+                    </div>
+                    <div class="product-content-right-color" style="display: flex;">
+                        <p><span>Color</span>: <b style="padding-right: 1.5rem; border-right: 1px solid black;">
+                                {{productdetail[4]}}</b></p>
+                        <p><span style="padding-left: 1.5rem;">Available</span>: <b> {{productdetail[5]}}</b></p>
+                    </div>
+                    <div class="product-content-right-size">
+                        <span>{{productdetail[8]}}</span>
+                        <!--                            <span>${p.size}</span>
+                        <span>${p.size}</span>
+                        <span>${p.size}</span>-->
+
+                    </div>
+                    <form method="POST">
+                        <div class="product-content-right-quantity">
+                            <input name="quantity" type="number" min="1" value="1" id="product-quantity"
+                                style="width: 4rem">
+                        </div>
+                        <div class="product-content-right-button row">
+                            <button class="product-content-right-button-first" type="submit" name="action"
+                                value="Addtocart">
+                                <i class="fa-solid fa-cart-plus"></i>
+                                <p>ADD TO CARD</p>
+                            </button>
+                        </div>
+                        {% if status == 2 %}
+                        <div id="statusMessage" style="color: green;" class="status"> Add to cart successfull!</div>
+                        {% endif %}
+                        {% if status == 1 %}
+                        <div id="statusMessage" style="color: green;" class="status"> Add to cart successfull!</div>
+                        {% endif %}
+                        {% if status == 0 %}
+                        <div id="statusMessage" style="color: red;"> Vượt quá số lượng hàng trong kho </div>
+                        {% endif %}
+                    </form>
+                    <div class="product-content-right-button row">
+                        <button class="product-content-right-button-second">
+                            <i class="fa-solid fa-heart"></i>
+
+                            <p>SAVE FOR LATER</p>
+                        </button>
+
+                    </div>
+                    <div class="product-content-right-detail">
+                        <p class="text-detail">
+                            {{productdetail[2]}}
+                        </p>
+                        <ul>
+                            <li> Style: Printed T-Shirt</li>
+                            <li> Design: Graphic</li>
+                            <li> Fabric: Jersey</li>
+                            <li> Length: Regular</li>
+                            <li> Neckline: Crew</li>
+                            <li> Sleeve Length: Short Sleeve</li>
+                            <li> 100% Cotton, Model Is 6'1 And Wears Size M</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="cart__suggest" style="    margin-left: 80px;
+             margin-top: 80px;margin-right: 100px">
+            <div class="cart__suggest-title">
+                <span class="cart__suggest-title__1">WE THINK YOU'LL LOVE</span>
+            </div>
+            <div class="cart__suggest-product">
+                <div class="cart__suggest-product__items" style="display: flex;
+                     flex-direction: column;
+                     justify-content: space-between;
+                     border-right:none;
+                     ">
+                    <div class="cart__suggest-product--img "
+                        style="background-image: url(https://media.boohoo.com/i/boohoo/dzz32937_black_xl?w=380&qlt=default&fmt.jp2.qlt=70&fmt=auto&sm=fit);">
+                        <div class="cart__suggest-product__icon">
+                            <i class="fa-regular fa-heart"></i>
+                        </div>
+                        <button class="btn-product__img">Quick View</button>
+
+                    </div>
+                    <div class="cart__suggest-product--info">
+                        <a href="" class="cart__suggest-product--info-title">
+                            CREAM RETRO SUNGLASSES
+                        </a>
+                        <div class="cart__suggest-product--info-price">
+                            <span class="cart__suggest-product--info-price__current">$7.20 </span>
+
+                            <!--                            <span class="cart__suggest-product--info-price__old">$12.00</span>
+                                                        <span class="i">|</span>
+                                                        <span class="cart__suggest-product--info-price__sale">40% OFF</span>-->
+                            <div class="cart__suggest-product--info-price__color-1">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart__suggest-product__items" style="display: flex;
+                     flex-direction: column;
+                     justify-content: space-between;
+                     border-right:none;
+                     border-left: 1px solid #e3e3e3;">
+                    <div class="cart__suggest-product--img "
+                        style="background-image: url(https://media.boohoo.com/i/boohoo/fzz39702_chocolate_xl?w=380&qlt=default&fmt.jp2.qlt=70&fmt=auto&sm=fit);">
+                        <div class="cart__suggest-product__icon">
+                            <i class="fa-regular fa-heart"></i>
+                        </div>
+                        <button class="btn-product__img">Quick View</button>
+                    </div>
+                    <div class="cart__suggest-product--info">
+                        <a href="" class="cart__suggest-product--info-title">
+                            SQUARE CAT EYE SUNGLASSES
+                        </a>
+                        <div class="cart__suggest-product--info-price">
+                            <span class="cart__suggest-product--info-price__current">$9.00</span>
+
+                            <!--                            <span class="cart__suggest-product--info-price__old">$18.00</span>-->
+                            <!--                            <span class="i">|</span>-->
+                            <!--                            <span class="cart__suggest-product--info-price__sale">50% OFF</span>-->
+                            <div class="cart__suggest-product--info-price__color-2">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart__suggest-product__items" style="display: flex;
+                     flex-direction: column;
+                     justify-content: space-between;
+                     border-right:none;
+                     border-left: 1px solid #e3e3e3;">
+                    <div class="cart__suggest-product--img "
+                        style="background-image: url(https://media.boohoo.com/i/boohoo/dzz32937_black_xl?w=380&qlt=default&fmt.jp2.qlt=70&fmt=auto&sm=fit);">
+                        <div class="cart__suggest-product__icon">
+                            <i class="fa-regular fa-heart"></i>
+                        </div>
+                        <button class="btn-product__img">Quick View</button>
+
+                    </div>
+                    <div class="cart__suggest-product--info">
+                        <a href="" class="cart__suggest-product--info-title">
+                            PU FANNY PACK
+                        </a>
+                        <div class="cart__suggest-product--info-price">
+                            <span class="cart__suggest-product--info-price__current">$10.00 </span>
+
+                            <!--                            <span class="cart__suggest-product--info-price__old">$22.00</span>
+                                                        <span class="i">|</span>
+                                                        <span class="cart__suggest-product--info-price__sale">55% OFF</span>-->
+                            <div class="cart__suggest-product--info-price__color-3">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart__suggest-product__items" style="display: flex;
+                     flex-direction: column;
+                     justify-content: space-between;
+                     border-right:none;
+                     border-left: 1px solid #e3e3e3;">
+                    <div class="cart__suggest-product--img "
+                        style="background-image: url(https://media.boohoo.com/i/boohoo/fzz39889_black_xl?w=380&qlt=default&fmt.jp2.qlt=70&fmt=auto&sm=fit);">
+                        <div class="cart__suggest-product__icon">
+                            <i class="fa-regular fa-heart"></i>
+                        </div>
+                        <button class="btn-product__img">Quick View</button>
+
+                    </div>
+                    <div class="cart__suggest-product--info">
+                        <a href="" class="cart__suggest-product--info-title">
+                            CHUNKY RECTANGLE OVERSIZED SUNGLASSES
+                        </a>
+                        <div class="cart__suggest-product--info-price">
+                            <span class="cart__suggest-product--info-price__current">$11.00 </span>
+
+                            <span class="cart__suggest-product--info-price__old">$22.00</span>
+                            <span class="i">|</span>
+                            <span class="cart__suggest-product--info-price__sale">50% OFF</span>
+                            <div class="cart__suggest-product--info-price__color-4">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart__suggest-product__items" style="display: flex;
+                     flex-direction: column;
+                     justify-content: space-between;
+                     border-right:none;
+                     border-left: 1px solid #e3e3e3;">
+                    <div class="cart__suggest-product--img "
+                        style="background-image: url(https://media.boohoo.com/i/boohoo/fzz40159_silver_xl?w=380&qlt=default&fmt.jp2.qlt=70&fmt=auto&sm=fit);">
+                        <div class="cart__suggest-product__icon">
+                            <i class="fa-regular fa-heart"></i>
+                        </div>
+                        <button class="btn-product__img">Quick View</button>
+
+                    </div>
+                    <div class="cart__suggest-product--info">
+                        <a href="" class="cart__suggest-product--info-title">
+                            METALLIC CROC CURVED CHAIN CROSS BODY
+                        </a>
+                        <div class="cart__suggest-product--info-price">
+                            <span class="cart__suggest-product--info-price__current">$23.00 </span>
+
+                            <span class="cart__suggest-product--info-price__old">$45.00</span>
+                            <span class="i">|</span>
+                            <span class="cart__suggest-product--info-price__sale">49% OFF</span>
+                            <div class="cart__suggest-product--info-price__color-5">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <script src="./product_js.js"></script>
+    <footer>
+
+        <div class="footerset" style="  border-top:solid 1px #ddd; ">
+            <strong>CLASS ACTION SETTLEMENT; CHECK YOUR EMAIL FOR $10 GIFT CARDS PLUS COMPLIMENTARY SHIPPING ON
+                ANY
+                PURCHASE. CLICK HERE FOR ADDITIONAL INFORMATION:</strong><br>
+            <a href="https://www.boohoocapricingsettlement.com/" target="_blank">
+                <p>WWW.BOOHOOCAPRICINGSETTLEMENT.COM</p>
+            </a>
+        </div>
+        <div class="b-footer_top">
+            <img src="img/usa_payment_fooer_strip_mob_nozip-2111.svg" alt="">
+        </div>
+        <div class="footercontent">
+            <div class="linkk">
+                <strong>QUICK LINKS</strong>
+                <ul>
+                    <li>
+                        <a href="#">Track My Order</a>
+                        <a href="#" class="fa-solid fa-chevron-up fa-rotate-90"></a>
+                    </li>
+                    <li>
+                        <a href="#">Help</a>
+                        <a href="#" class="fa-solid fa-chevron-up fa-rotate-90"></a>
+                    </li>
+                    <li>
+                        <a href="#">Returns</a>
+                        <a href="#" class="fa-solid fa-chevron-up fa-rotate-90"></a>
+                    </li>
+                    <li>
+                        <a href="#">Shipping Infor</a>
+                        <a href="#" class="fa-solid fa-chevron-up fa-rotate-90"></a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="sub">
+                <div class="sub1">
+                    <strong>ABOUT US & MORE</strong>
+                    <a href="#">About boohoo</a>
+                    <a href="#">Size Guide</a>
+                    <a href="#">Get Exclusive Offers & Updates</a>
+                    <a href="#">Student Discount</a>
+                    <a href="#">Become an Affiliate</a>
+                </div>
+                <div class="sub1">
+                    <strong>INFORMATION</strong>
+                    <a href="#">Sustainability</a>
+                    <a href="#">Investor Relations</a>
+                    <a href="#">Boohoo Social Responsibility</a>
+                    <a href="#">Klarna</a>
+                    <a href="#">Careers</a>
+                    <a href="#">T&Cs</a>
+                    <a href="#">PayPal</a>
+                    <a href="#">Afterpay</a>
+                    <a href="#">Privacy Notice - Updated January 2023</a>
+                    <a href="#">About Cookies</a>
+
+                    <a href="#">Sitemap</a>
+
+                </div>
+
+            </div>
+            <div class="infor">
+                <div class="subscribe">
+                    <p>SUBSCRIBE! GET AN EXTRA 10% OFF & INSIDE INFO!*</p>
+                    <form onsubmit="return checkEmail()">
+                        <input type="email" id="email" name="email" placeholder="Enter your email">
+                        <div id="emailError" class="error"></div>
+                        <button type="submit">SUBSCRIBE</button>
+                    </form>
+                    <p>*Extra 10% discount sent via email to new subscribers only. By subscribing, you agree to
+                        receive
+                        marketing communications from boohoo by email. You can unsubscribe at any point.</p>
+                </div>
+                <div class="footer-app">
+                    <h1>Download The Boohoo App</h1>
+                    <p>Hear about exclusive offers, get early access to collabs & quicker checkout</p>
+                    <div class="get-app">
+                        <div class="scan">
+                            <p>SCAN TO DOWNLOAD</p>
+                            <div class="qr">
+                                <img src="img/BH_app_QR.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="icon-app">
+                            <div class="chplay"><img src="img/GOOGLE_ENG.png" alt=""></div>
+                            <div class="appstore"><img src="img/APPLE_ENG.png" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="country">
+                <strong>COUNTRY</strong>
+                <select name="country" id="countr">
+                    <option value="USA"> USA $</option>
+                    <option value="Canada">CAN $</option>
+                    <option value="Vietnam">VIE đ</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-copy">
+                <div class="copy">
+                    <p>COPYRIGHT © 2023 BOOHOO</p>
+                </div>
+                <ul class="nav-policy">
+                    <li class="access"><a href="#">Accessibility</a></li>
+                    <li class="terms"><a href="#">Terms & Conditions</a></li>
+                    <li class="privacy-policy"><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function checkout() {
+            // Lấy giá trị tổng từ thẻ span có id là "total"
+            var total = document.getElementById("total").innerText;
+
+            // Chuyển đến trang thanh toán và truyền giá trị tổng qua URL
+            window.location.href = "payment.html?total=" + total;
+        }
+    </script>
+    <script>
+        function showpass(event) {
+            event.preventDefault();
+            var passwordField = document.getElementById("passwordField");
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+    </script>
+    <script src="../static/js/main.js"></script>
+    <script src="cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var statusMessage = document.getElementById('statusMessage');
+            if (statusMessage) {
+                statusMessage.style.display = 'block'; // Hiển thị tin nhắn
+
+                setTimeout(function () {
+                    statusMessage.style.display = 'none'; // Ẩn tin nhắn sau 3 giây
+                }, 3000);
+            }
+        });
+
+    </script>
+</body>
+
+
+</html>

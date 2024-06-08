@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+
+    <link rel="icon" href="img/logoboohoo.png">
+    <link rel="stylesheet" href="../static/css/style-header-men.css">
+    <script src="https://kit.fontawesome.com/9d9613e72c.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="../static/css/styleuser1.css">
+    <link rel="stylesheet" href="../static/css/styleusers.css" />
+    <style>
+        .sidebar2 .item:nth-child(2) {
+            background-color: white;
+
+        }
+
+        .container2 {
+            display: flex;
+            margin-left: 250px;
+            margin-right: 250px;
+            background: #F8F8F8;
+            border-left: 1px solid #E8E8E8;
+            border-right: 1px solid #E8E8E8;
+        }
+
+        .columns1 p {
+            font-size: 10px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .columns2 p {
+            font-size: 15px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .columns1 label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 13px;
+            margin-top: 15px;
+        }
+
+        .sidebar2 .item {
+            padding: 18px;
+            border-bottom: 1px solid #E8E8E8;
+            font-size: 13px;
+        }
+
+        .columns2 input[type="submit1"] {
+            text-align: center;
+            width: 100%;
+            padding: 10px 20px;
+            font-size: 13px;
+            color: white;
+            background-color: black;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .columns2 input[type="submit2"] {
+            text-align: center;
+            width: 100%;
+            padding: 10px 20px;
+            font-size: 13px;
+            background-color: #F8F8F8;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .columns1,
+        .columns2 {
+            width: 50%;
+            height: 750px;
+            /* Điều chỉnh chiều cao tùy ý */
+            background-color: #F8F8F8;
+            border: 1px solid #E8E8E8;
+            padding: 10px;
+        }
+
+
+
+        .container-history {
+            width: 80%;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            background-color: #f5f5f5;
+            overflow: hidden;
+        }
+
+        .row-history {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .container-history .row-history:not(:first-child) {
+            border-top: 1px solid #ddd;
+            margin-bottom: 8px;
+            background-color: white;
+        }
+
+        .code-column,
+        .product-column,
+        .status-column,
+        .price-column {
+            padding: 12px;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        .code-column {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-column {
+            flex: 2;
+        }
+
+        .status-column {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .price-column {
+            flex: 1;
+            text-align: right;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header {
+            background-color: white;
+            color: black;
+            font-weight: bold;
+            height: 57px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+
+
+        .product-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+
+        .product-info .prodetail {
+
+            width: 350px;
+
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+
+
+        }
+
+        .product-info .prodetail .namepro {
+            width: 250px;
+            word-wrap: break-word;
+
+        }
+
+        .product-info img {
+            max-width: 50px;
+            margin-right: 10px;
+        }
+
+        .total-price {
+            text-align: right;
+        }
+
+        .even {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+
+<body style="background-color: #F8F8F8">
+    {% include "head.html" %}
+    <hr style="border: 1px solid #ddd;">
+    <br><br><br><br><br><br>
+
+    <table id="table12">
+        <tr>
+            <td>
+                <div style="font-size: 18px;
+                         font-weight: 600;
+                         height: 78px;
+                         width: 100px;
+                         border-bottom: 1px solid;
+                         margin-left: 265px;
+                         position: relative;
+                         padding-top: 36px;
+                         padding-left: 5px;
+                         ">ACCOUNT</div>
+            </td>
+        </tr>
+    </table>
+    <div class="container2">
+        <div class="sidebar2">
+            <a href="#" class="item" style="height: 50px"></a>
+            <a href="/getorder" class="item">ORDER HISTORY</a>
+            <a href="/updateinfor" class="item">ACCOUNT DETAILS</a>
+            <a href="/changepassword" class="item">CHANGE PASSWORD</a>
+            {% if get_role == 'Seller' or get_role == 'Manager' %}
+            <a href="/usermanage" class="item">MY SHOP</a>
+            {% endif %}
+        </div>
+        <div class="content2">
+            <div class="full-width" style="font-size: 17px;
+                     font-weight: 600;
+                     text-align: center;
+                     display: flex;
+                     justify-content: center;
+                     align-items: center;">ORDER HISTORY</div>
+            <div class="two-columns">
+                <div class="container-history">
+                    <div class="header row-history">
+                        <div class="code-column">CODE</div>
+                        <div class="product-column">PRODUCTS</div>
+                        <div class="status-column" style="padding-left: 200px;">STATUS ORDER</div>
+                        <div class="price-column"> TOTAL PRICE </div>
+                    </div>
+                    {% for data in history_order %}
+                    <div class="row-history">
+                        <div class="code-column">
+                            <div><a href="/getbill/{{ data['billID'] }}"> {{ data['billID'] }}</a></div>
+                        </div>
+                        <div class="product-column">
+                            <ul>
+                                {% for product in data['products'] %}
+                                <li class="product-info">
+                                    <img src="../static/img/{{ product['image'] }}" alt="Product Image">
+                                    <div class="prodetail">
+                                        <div class="namepro"> {{ product['quantity'] }} x {{ product['nameProduct'] }}
+                                        </div>
+                                        <div style="color: red;">${{ product['unitPrice'] }}</div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="status-column" style="color: green; text-align: center;">{{ data['statusOrder'] }}
+                        </div>
+                        <div class="price-column total-price" style="color: red;">${{ data['totalPrice'] }}</div>
+                    </div>
+                    {% endfor %}
+                    <!-- Add more rows as needed -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="b-footer_top" style="padding:77px">
+            <img src="img/usa_payment_fooer_strip_mob_nozip-2111.svg" alt="">
+        </div>
+        <div class="footercontent">
+            <div class="linkk">
+                <strong>QUICK LINKS</strong>
+                <ul>
+                    <li>
+                        <a href="#">Track My Order</a>
+                        <a href="#" class="fa-solid fa-chevron-up fa-rotate-90"></a>
+                    </li>
+                    <li>
+                        <a href="#">Help</a>
+                        <a href="#" class="fa-solid fa-chevron-up fa-rotate-90"></a>
+                    </li>
+                    <li>
+                        <a href="#">Returns</a>
+                        <a href="#" class="fa-solid fa-chevron-up fa-rotate-90"></a>
+                    </li>
+                    <li>
+                        <a href="#">Shipping Infor</a>
+                        <a href="#" class="fa-solid fa-chevron-up fa-rotate-90"></a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="sub">
+                <div class="sub1">
+                    <strong>ABOUT US & MORE</strong>
+                    <a href="#">About boohoo</a>
+                    <a href="#">Size Guide</a>
+                    <a href="#">Get Exclusive Offers & Updates</a>
+                    <a href="#">Student Discount</a>
+                    <a href="#">Become an Affiliate</a>
+                </div>
+                <div class="sub1">
+                    <strong>INFORMATION</strong>
+                    <a href="#">Sustainability</a>
+                    <a href="#">Investor Relations</a>
+                    <a href="#">Boohoo Social Responsibility</a>
+                    <a href="#">Klarna</a>
+                    <a href="#">Careers</a>
+                    <a href="#">T&Cs</a>
+                    <a href="#">PayPal</a>
+                    <a href="#">Afterpay</a>
+                    <a href="#">Privacy Notice - Updated January 2023</a>
+                    <a href="#">About Cookies</a>
+
+                    <a href="#">Sitemap</a>
+
+                </div>
+
+            </div>
+            <div class="infor">
+                <div class="subscribe">
+                    <p>SUBSCRIBE! GET AN EXTRA 10% OFF & INSIDE INFO!*</p>
+                    <form onsubmit="return checkEmail()">
+                        <input type="email" id="email" name="email" placeholder="Enter your email">
+                        <div id="emailError" class="error"></div>
+                        <button type="submit">SUBSCRIBE</button>
+                    </form>
+                    <p>*Extra 10% discount sent via email to new subscribers only. By subscribing, you agree to receive
+                        marketing communications from boohoo by email. You can unsubscribe at any point.</p>
+                </div>
+                <div class="footer-app">
+                    <h1>Download The Boohoo App</h1>
+                    <p>Hear about exclusive offers, get early access to collabs & quicker checkout</p>
+                    <div class="get-app">
+                        <div class="scan">
+                            <p>SCAN TO DOWNLOAD</p>
+                            <div class="qr">
+                                <img src="img/BH_app_QR.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="icon-app">
+                            <div class="chplay"><img src="img/GOOGLE_ENG.png" alt=""></div>
+                            <div class="appstore"><img src="img/APPLE_ENG.png" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="country">
+                <strong>COUNTRY</strong>
+                <select name="country" id="countr">
+                    <option value="USA"> USA $</option>
+                    <option value="Canada">CAN $</option>
+                    <option value="Vietnam">VIE đ</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-copy">
+                <div class="copy">
+                    <p>COPYRIGHT © 2023 BOOHOO</p>
+                </div>
+                <ul class="nav-policy">
+                    <li class="access"><a href="#">Accessibility</a></li>
+                    <li class="terms"><a href="#">Terms & Conditions</a></li>
+                    <li class="privacy-policy"><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function showpass(event) {
+            event.preventDefault();
+            var passwordField = document.getElementById("passwordField");
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+    </script>
+    <script src="../static/js/main.js"></script>
+    <script src="cart1.js"></script>
+
+</body>
+
+</html>

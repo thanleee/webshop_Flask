@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Table</title>
+</head>
+
+<body>
+    <style>
+        /* Reset CSS */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Typography */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 1700px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            color: red;
+        }
+
+        /* Table */
+        .product-table {
+            max-width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #f4f4f4;
+            font-size: 14px;
+        }
+
+        .product-table thead th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .product-table th:nth-child(3),
+        .product-table td:nth-child(3) {
+            min-width: 250px;
+            /* Đặt chiều rộng tối thiểu cho cột "Description" */
+            text-align: left;
+        }
+
+        .product-table thead th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        /* Buttons */
+        .btn-container {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .btn-container a button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-container a button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Action Links */
+        .action-links a {
+            color: #007bff;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .action-links a:hover {
+            text-decoration: underline;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid;
+        }
+    </style>
+    {% include "admin/headerAdmin.html" %}
+    <div class="container">
+        <h1>Product Table</h1>
+        <div class="btn-container">
+            <a href="/addproduct"><button>Add Product</button></a>
+        </div>
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Color</th>
+                    <th>Stock</th>
+                    <!-- <th>Total Goods</th> -->
+                    <th>Category ID</th>
+                    <th>Size</th>
+                    <th>Total Goods Sold</th>
+                    <th>Image_1</th>
+                    <th>Image_2</th>
+                    <th>Discount</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in productmn %}
+                <tr>
+                    <td>{{ product[0] }}</td>
+                    <td>{{ product[1] }}</td>
+                    <td>{{ product[2] }}</td>
+                    <td>{{ product[3] }}</td>
+                    <td>{{ product[4] }}</td>
+                    <td>{{ product[5] }}</td>
+                    <!-- <td>{{ product[6] }}</td> -->
+                    <td>{{ product[7] }}</td>
+                    <td>{{ product[8] }}</td>
+                    <td>{{ product[9] }}</td>
+                    <td><img src="../static/img/{{ product[10] }}" style="width: 200px;" alt="Image_1"></td>
+                    <td><img src="../static/img/{{ product[11] }}" style="width: 200px;" alt="Image_2"></td>
+                    <td>{{ product[12] }}</td>
+                    <td class="action-links">
+                        <a href="/updateproduct/{{ product[0] }}">Update</a>
+                        <a href="/deleteproduct/{{ product[0] }}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

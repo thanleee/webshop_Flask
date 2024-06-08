@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOHOO | Woments and Mens</title>
+
+    <link rel="icon" href="../static/img/logoboohoo.png">
+    <link rel="stylesheet" href="../static/css/style-head-women.css">
+    <script src="https://kit.fontawesome.com/9d9613e72c.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="../static/accest/css/signup.css">
+    <style>
+        .user li:nth-child(3) {
+            margin-top: 0;
+        }
+
+        .user li:nth-child(2) {
+            margin-top: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    {% include "head.html" %}
+
+    <hr style="border: 1px solid #ddd;">
+    <section>
+
+        <div class="container">
+            <div class="signup__header">
+                <span class="signup__header-title">CREATE ACCOUNT</span>
+            </div>
+            <div class="signup__connect">
+                <div class="signup__connect-text1">Connect with</div>
+                <div class="signup__connect-icon">
+                    <button class="btn__icon--face">
+                        <i class="fa-brands fa-facebook icon-face"></i>
+                    </button>
+                </div>
+                <div class="signup__connect-text2">By continuing you agree to our
+                    <a href="" class="signup__connect-text2--link">Terms & Conditions.</a>
+                    See our
+                    <a href="" class="signup__connect-text2--link">Privacy Notice</a>
+                </div>
+            </div>
+            <form method="POST" action="/signup">
+                <div class="signup__body">
+                    <div class="signup__body-form">
+                        <div class="signup__body-phone">
+                            <label for="sdt" class="signup__body-phone-text text--form">My Phone</label>
+                            <input id="sdt" type="text" class="signup__body-email-input input__text" name="phone">
+                        </div>
+                        <div class="signup__body-email">
+                            <label for="email1" class="signup__body-email-text text--form">Email Address</label>
+                            <input id="email1" type="text" class="signup__body-email-input input__text" name="email">
+                        </div>
+                        <div class="signup__body-confirm" style="display: flex;">
+                            <!-- <div class="signup__body-confirm--box"></div> -->
+                            <div class="chekbox">
+                                <input type="checkbox" />
+                            </div>
+                            <span class="signup__body-confirm-text text-1">I confirm the email address is correct</span>
+                        </div>
+                        <div class="signup__body-password">
+                            <label for="pass1" class="signup__body-password-text text--form">Password</label>
+                            <div class="signup__body-password-input input__show">
+                                <input id="pass1" type="text" class="signup__body-password-input input" name="password">
+                                <div class="signup__body-password-input--show input-a">
+                                    <a class="input__pass-show show">Show</a>
+                                </div>
+                            </div>
+                            <span class="signup__body-password-text text-1">Password has to be at least 6
+                                characters</span>
+                        </div>
+                        <div class="signup__body-confirm__pw">
+                            <label for="confim_pass" class="signup__body-confirm__pw-text text--form">Confirm
+                                Password</label>
+                            <div class="signup__body-confirm__pw-input input__show">
+                                <input id="confim_pass" type="text" class="signup__body-confirm__pw-input input"
+                                    name="cfpass">
+                                <div class="signup__body-confirm__pw-input--show input-a">
+                                    <a class="input__confirm__pw-show show">Show</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="signup__body-fname">
+                            <label for="fname" class="fname-text text--form">First Name</label>
+                            <input id="fname" type="text" class="fname-input input__text" name="fname">
+                        </div>
+                        <div class="signup__body-lname">
+                            <label for="lname" class="lname-text text--form">Last Name</label>
+                            <input id="lname" type="text" class="lname-input input__text" name="lname">
+                        </div>
+                        <!-- <div class="signup__body-date">
+                            <div class="date__text text--form">Date Of Birth</div>
+                            <div class="date__table">
+                                <div class="date__day date">
+                                    <span class="day date--text">MM</span>  
+                                    <i class="date-icon fa-sharp fa-solid fa-chevron-down"></i>
+                                </div>
+                         
+                                <div class="date__month date">
+                                    <sapn class="month date--text">DD</sapn>
+                                    <i class=" date-icon fa-sharp fa-solid fa-chevron-down"></i>
+                                </div>
+                          
+                           
+                                <div class="date__year date">
+                                    <span class="year date--text">YY</span>
+                                    <i class="date-icon fa-sharp fa-solid fa-chevron-down"></i>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="signup__form-text text-1">By continuing you agree to our
+                            <a href="" class="signup__connect-text2--link">Terms & Conditions.</a>
+                            See our
+                            <a href="" class="signup__connect-text2--link">Privacy Notice</a>
+                        </div>
+                        <button type="submit" class="btn--create">Create Acount</button>
+                    </div>
+                    <div class="signup__body-img">
+                        <img src="https://us.boohoo.com/dw/image/v2/BBDT_PRD/on/demandware.static/-/Library-Sites-boohoo-content-global-web-sfra/default/dw98264f37/images/myaccount/account-image-1.jpg?sw=683&q=65"
+                            alt="" class="signup-img">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <footer>
+
+        <div class="footerset">
+            <strong>CLASS ACTION SETTLEMENT; CHECK YOUR EMAIL FOR $10 GIFT CARDS PLUS COMPLIMENTARY SHIPPING ON ANY
+                PURCHASE. CLICK HERE FOR ADDITIONAL INFORMATION:</strong><br>
+            <a href="https://www.boohoocapricingsettlement.com/" target="_blank">
+                <p>WWW.BOOHOOCAPRICINGSETTLEMENT.COM</p>
+            </a>
+        </div>
+        <div class="b-footer_top">
+            <img src="img/usa_payment_fooer_strip_mob_nozip-2111.svg" alt="">
+        </div>
+        <div class="footercontent">
+            <div class="linkk">
+                <strong>QUICK LINKS</strong>
+                <ul>
+                    <li>
+                        <a href="#">Track My Order</a>
+                        <a href="#" class="fa-solid fa-chevron-up fa-rotate-90"></a>
+                    </li>
+                    <li>
+                        <a href="#">Help</a>
+                        <a href="#" class="fa-solid fa-chevron-up fa-rotate-90"></a>
+                    </li>
+                    <li>
+                        <a href="#">Returns</a>
+                        <a href="#" class="fa-solid fa-chevron-up fa-rotate-90"></a>
+                    </li>
+                    <li>
+                        <a href="#">Shipping Infor</a>
+                        <a href="#" class="fa-solid fa-chevron-up fa-rotate-90"></a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="sub">
+                <div class="sub1">
+                    <strong>ABOUT US & MORE</strong>
+                    <a href="#">About boohoo</a>
+                    <a href="#">Size Guide</a>
+                    <a href="#">Get Exclusive Offers & Updates</a>
+                    <a href="#">Student Discount</a>
+                    <a href="#">Become an Affiliate</a>
+                </div>
+                <div class="sub1">
+                    <strong>INFORMATION</strong>
+                    <a href="#">Sustainability</a>
+                    <a href="#">Investor Relations</a>
+                    <a href="#">Boohoo Social Responsibility</a>
+                    <a href="#">Klarna</a>
+                    <a href="#">Careers</a>
+                    <a href="#">T&Cs</a>
+                    <a href="#">PayPal</a>
+                    <a href="#">Afterpay</a>
+                    <a href="#">Privacy Notice - Updated January 2023</a>
+                    <a href="#">About Cookies</a>
+
+                    <a href="#">Sitemap</a>
+
+                </div>
+
+            </div>
+            <div class="infor">
+                <div class="subscribe">
+                    <p>SUBSCRIBE! GET AN EXTRA 10% OFF & INSIDE INFO!*</p>
+                    <form onsubmit="return checkEmail()">
+                        <input type="email" id="email" name="email" placeholder="Enter your email">
+                        <div id="emailError" class="error"></div>
+                        <button type="submit">SUBSCRIBE</button>
+                    </form>
+                    <p>*Extra 10% discount sent via email to new subscribers only. By subscribing, you agree to receive
+                        marketing communications from boohoo by email. You can unsubscribe at any point.</p>
+                </div>
+                <div class="footer-app">
+                    <h1>Download The Boohoo App</h1>
+                    <p>Hear about exclusive offers, get early access to collabs & quicker checkout</p>
+                    <div class="get-app">
+                        <div class="scan">
+                            <p>SCAN TO DOWNLOAD</p>
+                            <div class="qr">
+                                <img src="img/BH_app_QR.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="icon-app">
+                            <div class="chplay"><img src="img/GOOGLE_ENG.png" alt=""></div>
+                            <div class="appstore"><img src="img/APPLE_ENG.png" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="country">
+                <strong>COUNTRY</strong>
+                <select name="country" id="countr">
+                    <option value="USA"> USA $</option>
+                    <option value="Canada">CAN $</option>
+                    <option value="Vietnam">VIE đ</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-copy">
+                <div class="copy">
+                    <p>COPYRIGHT © 2023 BOOHOO</p>
+                </div>
+                <ul class="nav-policy">
+                    <li class="access"><a href="#">Accessibility</a></li>
+                    <li class="terms"><a href="#">Terms & Conditions</a></li>
+                    <li class="privacy-policy"><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script src="main.js"></script>
+</body>
+
+
+</html>

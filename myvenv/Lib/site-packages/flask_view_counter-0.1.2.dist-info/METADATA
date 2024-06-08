@@ -1,0 +1,89 @@
+Metadata-Version: 2.1
+Name: flask-view-counter
+Version: 0.1.2
+Summary: Adds lightweight request metrics to flask applications
+Home-page: https://gitlab.com/shiftlesscode/flask-view-counter/
+Author: Shiftless
+Author-email: shiftlesscode@gmail.com
+License: WTFPL
+Platform: any
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Flask
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: Flask
+Requires-Dist: flask-sqlalchemy
+
+# flask-view-counter
+Flask-view-counter is a simple addon for flask applications that lets you track
+pageloads. It requires flask-sqlalchemy (for now), so if you are already using
+it, you can get pageload metrics for free. Flask-view-counter provides a
+decorator for views that records information about the request. Additionally,
+tools for querying the generated data are provided. Display of the data is left
+as an exercise to the user, in order to keep dependencies (and the extension) as
+small and simple as possible. SQLAlchemy must of course be setup and configured
+properly. 
+
+# Example usage
+
+## app.py
+```python
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_view_counter import ViewCounter
+
+app = Flask(__name__)
+app.config.from_object(select_config())
+
+db = SQLAlchemy(app)
+
+view_counter = ViewCounter(app, db)
+
+from app import routes
+```
+
+## routes.py
+```python
+from app import app, view_counter
+
+@app.route('/')
+@view_counter.count
+def index():
+	return "Hello World"
+```
+
+Flask-view-counter will then record the decorated view, logging details about
+the user. 
+
+A word of caution, make sure you are decorating a view function, that is, the
+function which actually returns a valid wsgi response. The primary place you
+will encounter this is in calls to `abort()`. In this case, your "view" won't
+return anything at all, and instead the error handler will return the response.
+Consequently, if you want to know about this error (presumably you do!), then
+you must decorate a custom error handler function for that error code. I.E
+
+```python
+@app.route(/imight400/<yes>/)
+@viewcounter.count
+def might400(yes):
+	if yes == "yes":
+		abort(400)  # When we abort here, viewcounter can't see what is 
+					# happening, define a custom error handler if you want to
+					# know about this
+	return "OK!"
+
+@app.errorhandler(400)
+@viewcounter.count
+def bad_request(e):
+	# with the error handler decorated, flask-view-counter will record this
+	# error. You can use any of the return formats that flask allows.
+	return render_template("400.html", error=e), 400
+
+```
+

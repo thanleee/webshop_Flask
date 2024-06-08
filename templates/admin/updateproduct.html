@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Update Product</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+    
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+    
+        label {
+            font-weight: bold;
+        }
+    
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+    
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+<div class="container">
+    <h1>Update Product</h1>
+    <form action="/updateproduct/{{ product_id }}" method="POST" enctype="multipart/form-data">
+        <label for="product_id">ID:</label>
+        <input type="text" name="product_id" value="{{ product[0] }}"><br><br>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ product[1] }}"><br><br>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description">{{ product[2] }}</textarea><br><br>
+        <label for="price">Price:</label><br>
+        <input type="number" id="price" name="price" value="{{ product[3] }}" required><br>
+        <label for="color">Color:</label><br>
+        <input type="text" name="color" value="{{ product[4] }}" ><br>
+        <label for="stock">Stock:</label><br>
+        <input type="number" id="stock" name="stock" value="{{ product[5] }}" required><br>
+        <label for="category_id">Category ID:</label><br>
+        <input type="text" name="category_id" value="{{ product[7] }}" disabled><br>
+        <select id="category_id" name="category_id" required>
+            <option value="" disabled selected>Please select</option>
+            {% for category_option in category_options %}
+                <option value="{{ category_option }}" {% if category_option == product_category_id %} selected {% endif %}>{{ category_option }}</option>
+            {% endfor %}
+        </select>
+        <!-- <input type="text" name="old_category_id" value="{{ product[7] }}"> -->
+        <br>
+        <label for="size">Size:</label><br>
+        <input type="text" name="size" value="{{ product[8] }}" ><br>
+        <label for="image_1">Image 1:</label><br>
+        <input type="file" id="image_1" name="image_1"><br>
+        <img src="../static/img/{{product[10] }}"style="width: 200px;" alt="Current Image 1"><br><br>
+
+        <label for="image_2">Image 2:</label><br>
+        <input type="file" id="image_2" name="image_2"><br>
+        <img src="../static/img/{{ product[11] }}"style="width: 200px;" alt="Current Image 2"><br><br>
+        <input type="number" id="discount" name="discount" value="{{ product[12] }}" required><br>
+
+        <button type="submit">Update Product</button>
+    </form>
+    
+</div>
+
+</body>
+
+</html>

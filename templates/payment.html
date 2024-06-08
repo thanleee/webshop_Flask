@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+
+    <link rel="icon" href="img/logoboohoo.png">
+    <link rel="stylesheet" href="../static/css/style-header-men.css">
+    <script src="https://kit.fontawesome.com/9d9613e72c.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="../static/css/stylespayment.css">
+
+</head>
+
+<body>
+
+    {% include "head.html" %}
+    <main>
+        <p class="titleP" style="font-size: 3rem;
+        font-weight: 700;
+        display: flex;
+        justify-content: space-evenly;
+        padding-top: 3rem;">Payment</p>
+        <div class="container" style="padding-top: 0;">
+
+            <form action="{{ url_for('order') }}" method="POST">
+
+                <div class="row">
+
+                    <div class="col">
+
+                        <div
+                            style="display: flex; align-items: center; justify-content: space-between;margin-bottom: 5px;">
+                            <p style="font-size: 15px;font-weight: 600">Your Cart:</p>
+                            <p style="font-size: 15px;font-weight: 600;" id="total">${{ total }}</p>
+                        </div>
+                        <div
+                            style="display: flex; align-items: center; justify-content: space-between;margin-bottom: 5px;">
+                            <p style="font-size: 15px;">Delivery Fee:</p>
+                            <p id="deliveryFee" style="font-size: 15px;" id="deliveryFee"></p>
+                        </div>
+                        <div
+                            style="display: flex; align-items: center; justify-content: space-between;margin-bottom: 5px;">
+                            <p style="font-size: 15px;">Sale:</p>
+                            <p style="font-size: 15px;" id="saleprice">-${{ sale }}</p>
+                        </div>
+                        <div
+                            style="display: flex; align-items: center; justify-content: space-between;margin-bottom: 5px;">
+                            <p style="font-size: 15px; font-weight: 600;">ORDER TOTAL (INCLUDING DELIVERY AND SALE):</p>
+                            <p id="orderTotal" style="font-size: 15px;font-weight: 600;" id="orderTotal">
+                            </p>
+                        </div>
+                        <div style="width:333px;border-bottom:1px solid black;padding-bottom: 10px;"></div>
+                        <br>
+                        <h3 class="title">billing address</h3>
+                        <div class="inputBox">
+                            <span>full name :</span>
+                            <input type="text" placeholder="Nguyen Van A" name="name" required>
+                        </div>
+                        <div class="inputBox">
+                            <span>email :</span>
+                            <input type="email" placeholder="example@gmail.com" name="email" required>
+                        </div>
+                        <div class="inputBox">
+                            <span>phone :</span>
+                            <input type="tel" placeholder="0986321457" name="phone" required>
+                        </div>
+                        <div class="inputBox">
+                            <span>address :</span>
+                            <input id="address" type="text" placeholder="Ha Noi" name="address" required>
+                        </div>
+                        <!-- Add shipping method field -->
+                        <br>
+                        <div class="inputBox">
+                            <h3 class="title">Shipping Method</h3>
+                            <select name="shippingMethod" id="shippingMethod" name="shippingMethod" required>
+                                {% for data in courier %}
+                                <option>{{data[1]}} - ${{data[2]}}</option>
+
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col" style="margin-left: 20px;">
+                        <h3 class="title">payment</h3>
+                        <div class="inputBox">
+                            <span>cards accepted :</span>
+                            <img src="../static/img/boohoo_logo_black.png" alt="">
+                        </div>
+                        <div class="inputBox" style="display: flex;">
+                            <label class="radio-label">
+                                <input type="radio" name="paymentMethod" value="cash">Payment Cash
+                            </label>
+                        </div>
+                        <div class="inputBox" style="display: flex;">
+                            <label class="radio-label">
+                                <input type="radio" name="paymentMethod" value="card" checked>Payment Card
+                            </label>
+                        </div>
+                        <!-- <div id="cardPaymentFields">
+                            <div class="inputBox">
+                                <span>Name On Card:</span>
+                                <input type="text" placeholder="NGUYEN VAN A" required>
+                            </div>
+                            <div class="inputBox">
+                                <span>Credit Card Number:</span>
+                                <input type="text" placeholder="****-****-****-****" maxlength="19" required>
+                            </div>
+
+                            <div class="inputBox">
+                                <span>Bank Name:</span>
+                                <input type="text" placeholder="Agribank" required>
+                            </div>
+                        </div> -->
+                    </div>
+                    <input type="text" name="total" style="display: none;" value="{{ total }}">
+                    <input type="text" name="pricesale" style="display: none;" value="{{ sale }}">
+                    <input type="text" id="gettotalorder" name="totalorder" style="display: none;" value="">
+                    <button type="submit" class="submit-btn" style="background: #2f2f2f;">
+                        <!-- <a href="{{ url_for('order') }}" style="color: white;">Order</a> -->Order
+                    </button>
+                    <div id="success-msg" class="hide">Đặt hàng thành công!</div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="cart1.js"></script>
+    <script src="main.js"></script>
+
+    <script>
+        // Wait for the document to load
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the payment method radio buttons
+            var paymentMethodRadios = document.getElementsByName("paymentMethod");
+
+            // Get the card payment fields
+            var cardPaymentFields = document.getElementById("cardPaymentFields");
+
+            // Add change event listener to the payment method radio buttons
+            for (var i = 0; i < paymentMethodRadios.length; i++) {
+                paymentMethodRadios[i].addEventListener("change", function () {
+                    // Check the selected payment method
+                    var selectedPaymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+
+                    // Toggle visibility and required attribute of card payment fields
+                    if (selectedPaymentMethod === "card") {
+                        cardPaymentFields.style.display = "block";
+                        enableCardFieldsRequired();
+                    } else {
+                        cardPaymentFields.style.display = "none";
+                        disableCardFieldsRequired();
+                    }
+                });
+            }
+
+
+
+        });
+    </script>
+    <script>
+        // Biến lưu trữ giá trị phí vận chuyển mặc định
+        var defaultCourier = parseFloat("{{ courier[0][2] }}");
+
+        // Gán giá trị mặc định cho phần tử deliveryFee khi trang được tải lần đầu
+        document.getElementById('deliveryFee').textContent = '$' + defaultCourier.toFixed(2);
+
+        // Lắng nghe sự kiện thay đổi của phần tử select
+        document.getElementById('shippingMethod').addEventListener('change', function () {
+            // Lấy giá trị của phí vận chuyển từ phần tử select
+            var selectElement = document.getElementById('shippingMethod');
+            var selectedData = selectElement.value.split(' - $');
+            var deliveryFee = parseFloat(selectedData[1]);
+
+            // Cập nhật giá trị phí vận chuyển vào phần tử deliveryFee
+            document.getElementById('deliveryFee').textContent = '$' + deliveryFee.toFixed(2);
+
+            // Tính toán và cập nhật ORDER TOTAL
+            updateOrderTotal();
+        });
+
+        // Hàm tính toán và cập nhật ORDER TOTAL
+        function updateOrderTotal() {
+            // Lấy giá trị total từ biến template
+            var total = parseFloat("{{ total }}");
+            // Lấy giá trị sale từ biến template
+            var sale = parseFloat("{{ sale }}");
+            // Lấy giá trị phí vận chuyển từ phần tử deliveryFee
+            var deliveryFee = parseFloat(document.getElementById('deliveryFee').textContent.replace('$', ''));
+
+            // Tính toán ORDER TOTAL
+            var orderTotal = total + deliveryFee - sale;
+
+            // Cập nhật giá trị ORDER TOTAL vào phần tử orderTotal
+            document.getElementById('orderTotal').textContent = '$' + orderTotal.toFixed(1);
+            document.getElementById("gettotalorder").value = orderTotal.toFixed(1);
+        }
+
+        // Gọi hàm updateOrderTotal khi trang được tải
+        updateOrderTotal();
+    </script>
+
+    <!--        <script>
+
+            var address = document.getElementById("address");
+            var date = document.getElementById("date");
+
+            address.addEventListener("blur", function () {
+                var time = new Date().toLocaleString();
+                date.value = time;
+            });
+
+        </script>-->
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+* {
+    font-family: "Lato", "Helvetica Neue", "Helvetica", "Arial", "Nimbus Sans L", "Liberation Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+.flex-12 {
+    flex-basis: 100% !important;
+}
+
+main {
+    background: #F8F8F8;
+    margin-top: 150px;
+}
+.titleP{
+    font-size: 3rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2rem;
+}
+.container {
+    padding-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    min-height: 100vh;
+    background: #F8F8F8;
+    max-width: 100%; /* Thêm thuộc tính max-width */
+    width: 75%; /* Thêm thuộc tính width */
+    margin: 0 auto; /* Thêm margin: 0 auto để căn giữa theo chiều ngang */
+}
+
+.container form {
+    padding: 20px;
+    width: 1200px;
+    background: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+}
+
+.container form .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.container form .row .col {
+    flex: 1 1 250px;
+}
+
+.container form .row .col .title {
+    font-size: 20px;
+    color: #333;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.container form .row .col .inputBox {
+    margin: 15px 0;
+}
+
+.container form .row .col .inputBox span {
+    margin-bottom: 10px;
+    display: block;
+    font-size: 18px;
+}
+
+.container form .row .col .inputBox input {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    font-size: 15px;
+    text-transform: none;
+}
+
+.container form .row .col .inputBox input:focus {
+    border: 1px solid #000;
+}
+
+.container form .row .col .flex {
+    display: flex;
+    gap: 15px;
+}
+
+.container form .row .col .flex .inputBox {
+    margin-top: 5px;
+    
+}
+
+.container form .row .col .inputBox img {
+    height: 34px;
+    margin-top: 5px;
+    filter: drop-shadow(0 0 1px #000);
+    
+}
+
+.container form .submit-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 17px;
+    background: #27ae60;
+    color: #fff;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.container form .submit-btn:hover {
+    background: #2ecc71;
+}
+
+#cardPaymentFields {
+    display: block;
+}
+
+#cardPaymentFields.hide {
+    display: none;
+}
+
+.hide {
+    display: none;
+}
+
+.containcart .product .quick-view {
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.containcart .remove {
+    display: inline-block!important;
+}
+
+.containcart .product {
+    background-color: var(--white);
+    display: grid;
+    grid-template-columns: 20% auto;
+    padding: 10px;
+    column-gap: 20px;
+    border-radius: 20px;
+}
+
+.containcart .product .product-image img {
+    height: 100px;
+}
+
+.containcart .product .product-image {
+    background-color: var(--light);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container form .row .col .inputBox select {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    font-size: 15px;
+    text-transform: none;
+    appearance: none; /* Ẩn kiểu mặc định của dropdown */
+    background: url('https://cdn.iconscout.com/icon/free/png-256/chevron-down-4-487172.png') no-repeat right center; /* Thêm biểu tượng mũi tên */
+    background-size: 20px; /* Kích thước biểu tượng mũi tên */
+    -webkit-appearance: none; /* Ẩn kiểu mặc định trên các trình duyệt WebKit (Chrome, Safari, Edge, Opera) */
+    -moz-appearance: none; /* Ẩn kiểu mặc định trên Firefox */
+}
+
+.container form .row .col .inputBox select:focus {
+    border: 1px solid #000;
+    outline: none;
+}

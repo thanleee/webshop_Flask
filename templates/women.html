@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOHOO | Woments and Mens</title>
+
+    <link rel="icon" href="../static/img/logoboohoo.png">
+    <link rel="stylesheet" href="../static/css/style-head-women.css">
+    <script src="https://kit.fontawesome.com/9d9613e72c.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="../static/accest/css/style1_women.css">
+    <style>
+        .product-fillter form {
+            list-style-type: none;
+            padding: 10px 20px;
+            max-height: 200px;
+            background: #fff;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            animation: Slide linear 1s;
+
+        }
+
+        .col1 div,
+        .col2 div {
+            margin-left: 10%;
+            width: 80%;
+            height: 200px;
+
+            background-color: #F8F8F8;
+            text-align: left;
+            font-size: 12px;
+
+        }
+    </style>
+</head>
+
+<body>
+    {% include "head.html" %}
+    <hr style="border: 1px solid #ddd;">
+    <br><br><br><br><br><br>
+
+
+
+    <section>
+        <table id="table1" style="padding-bottom: 15px">
+            <tr>
+                <td class="col1">
+                    {% if current_category_name %}
+                    <div style="width: auto; height: 17px; margin-bottom: 15px; margin-top: 0px;">
+                        <p>HOME / WOMEN / {{ current_category_name }}</p>
+                    </div>
+                    {% else %}
+                    <div style="width: auto; height: 17px; margin-bottom: 15px; margin-top: 0px;">
+                        <p>HOME / WOMEN </p>
+                    </div>
+                    {% endif %}
+                    <div style="padding-bottom: 20px;">
+                        <p style="font-size:large; font-weight: 200; margin-bottom: 10px">NEW IN</p>
+                        <p>
+                            Closet in need of a refresh? Calling all trendsetters, our women’s new in edit has all the
+                            latest pieces that have just dropped on site. Whether you’re stocking up on staples or
+                            looking
+                            to change up your style, shop
+                            <span id="text" style="display:none">
+                                everything from trending styles to elevated basics and more. Whatever your vibe, these
+                                are
+                                styles you’re going to want in your closet. Get clued up on the clothes everyone’s
+                                talking
+                                about with our new in shop, updated daily with 100s of styles so you’ll never miss a
+                                trick!
+                            </span>
+                            <a id="toggleBtn" href="#" onclick="toggle()">...Read more</a>
+                        </p>
+                    </div>
+                </td>
+                <td class="col2">
+                    <div style="margin-top: -30px;">
+                        <br>
+                        <a href="#1">Just Landed Today</a><br>
+                        <a href="#1">New Season</a><br>
+                        <a href="#1">Back In Stock</a><br>
+                        <a href="#1">New In Dresses</a><br>
+                        <a href="#1">New Beauty Products</a><br>
+                        <a href="#1">New In Shoes</a>
+                    </div>
+                </td>
+                <td class="col3">
+                    <div class="col31" style="margin-top: -35px;">
+                        <br>
+                        <a href="#1">New-In Accessories</a><br>
+                        <a href="#1">New In Plus Size Clothing</a>
+                    </div>
+
+                </td>
+            </tr>
+        </table>
+        <div class="main">
+            <aside class="slidebar">
+                <div>
+                    <div class="slidebar-refine">REFINE BY</div>
+
+                    <div class="slidebar-option show">
+                        <div>
+                            <span class="option-close">COLOR</span>
+                            <div>
+                                <div class="container-fillter">
+                                    <ul class="product-fillter">
+
+
+                                        <form id="f1" action="{{ url_for('search') }}" method="get">
+                                            {% for color in colors %}
+                                            <li class="flex-12">
+                                                <input class="chon" type="checkbox" name="color" value="{{ color[0] }}"
+                                                    {% if colo[loop.index0] %}checked{% endif %}
+                                                    onclick="setCheck(this)" />{{ color[0] }}<br />
+                                            </li>
+                                            {% endfor %}
+                                        </form>
+
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slidebar-option show">
+                        <div>
+                            <span class="option-close">PRICE</span>
+                            <div>
+                                <div class="container-fillter">
+                                    <ul class="product-fillter">
+                                        <form id="f2" action="{{ url_for('search') }}" method="get">
+                                            {% for price in pp %}
+                                            <li class="flex-12">
+                                                <input class="chon" type="checkbox" name="price" value="{{ price }}" {%
+                                                    if price_checkboxes[loop.index0] %}checked{% endif %}
+                                                    onclick="setCheck1(this)" />${{ price }}<br />
+                                            </li>
+                                            {% endfor %}
+                                        </form>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+            <div class="container gird-4" id="content">
+
+                <div class="container-nav">
+                    <div style="display: flex;">
+                        <div class="option-display active">4</div>
+                        <div class="option-display">3</div>
+                    </div>
+                    <div class="option-sort" style="border: 1px solid #ddd">Sort</div>
+                </div>
+
+                {% for data in products %}
+                <div class="product">
+                    <div class="product-image">
+                        <a href="/products/{{data[0]}}"><img src="../static/img/{{data[10]}}"
+                                style="max-width: 100%;"></img></a>
+                        <a href="/products/{{data[0]}}">
+                            <div class="quick-view">
+                                Quick view
+                            </div>
+                        </a>
+                        <div class="icon-heart">
+                            <img src="../static/img/icon-heart.png" alt="save for later" title="save for later"
+                                style="max-width: 100%;">
+                        </div>
+
+                    </div>
+                    <div class="product-description">
+                        <a href="/products/{{data[0]}}">
+                            <div class="product-name">
+                                {{data[1]}}
+                            </div>
+                        </a>
+                        {% if data[12] is not none %}
+                        <div class="product-price">
+                            <div class="price">
+                                <span class="price-after-reduce">$
+                                    <div>
+                                        <script>
+                                            document.write(parseFloat("{{data[3]}}") - (parseFloat("{{data[3]}}") * parseFloat("{{data[12]}}") / 100).toFixed(1));
+                                        </script>
+                                    </div>
+                                </span>
+
+                                <span class="price-before-reduce" style="margin-left:3px ;">${{data[3]}}
+
+                                </span>
+
+                            </div>
+
+                            <div class="precent-reduce">
+                                {{data[12]}}% OFF
+                            </div>
+
+                        </div>
+                        {% endif %}
+                        {% if data[12] is none %}
+                        <div class="product-price">
+                            <div class="price">
+                                <span class="price-after-reduce" style="color: black;">${{data[3]}}</span>
+
+                            </div>
+
+                        </div> {% endif %}
+                        <div class="product-color">
+                            <div class="block-color" style="background: {{data[4]}};"></div>
+                        </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+                {% for data in getProductByCategory %}
+                <div class="product">
+                    <div class="product-image">
+                        <a href="/products/{{data[0]}}"><img src="../static/img/{{data[10]}}"
+                                style="max-width: 100%;"></img></a>
+                        <a href="/products/{{data[0]}}">
+                            <div class="quick-view">
+                                Quick view
+                            </div>
+                        </a>
+                        <div class="icon-heart">
+                            <img src="../static/img/icon-heart.png" alt="save for later" title="save for later"
+                                style="max-width: 100%;">
+                        </div>
+
+                    </div>
+                    <div class="product-description">
+                        <a href="/products/{{data[0]}}">
+                            <div class="product-name">
+                                {{data[1]}}
+                            </div>
+                        </a>
+                        {% if data[12] is not none %}
+                        <div class="product-price">
+                            <div class="price">
+                                <span class="price-after-reduce">$
+                                    <script>
+                                        document.write(parseFloat("{{data[3]}}") - (parseFloat("{{data[3]}}") * parseFloat("{{data[12]}}") / 100).toFixed(1));
+                                    </script>
+                                </span>
+
+                                <span class="price-before-reduce">${{data[3]}}
+
+                                </span>
+
+                            </div>
+
+                            <div class="precent-reduce">
+                                {{data[12]}}% OFF
+                            </div>
+
+                        </div>
+                        {% endif %}
+                        {% if data[12] is none %}
+                        <div class="product-price">
+                            <div class="price">
+                                <span class="price-after-reduce" style="color: black;">${{data[3]}}</span>
+
+                            </div>
+
+                        </div> {% endif %}
+                        <div class="product-color">
+                            <div class="block-color" style="background: {{data[4]}};"></div>
+                        </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+                {% for data in search_results%}
+                <div class="product">
+                    <div class="product-image">
+                        <a href="/products/{{data[0]}}"><img src="../static/img/{{data[10]}}"
+                                style="max-width: 100%;"></img></a>
+                        <a href="/products/{{data[0]}}">
+                            <div class="quick-view">
+                                Quick view
+                            </div>
+                        </a>
+                        <div class="icon-heart">
+                            <img src="../static/img/icon-heart.png" alt="save for later" title="save for later"
+                                style="max-width: 100%;">
+                        </div>
+
+                    </div>
+                    <div class="product-description">
+                        <a href="/products/{{data[0]}}">
+                            <div class="product-name">
+                                {{data[1]}}
+                            </div>
+                        </a>
+                        {% if data[12] is not none %}
+                        <div class="product-price">
+                            <div class="price">
+                                <span class="price-after-reduce">$
+                                    <script>
+                                        document.write(parseFloat("{{data[3]}}") - (parseFloat("{{data[3]}}") * parseFloat("{{data[12]}}") / 100).toFixed(1));
+                                    </script>
+                                </span>
+
+                                <span class="price-before-reduce">${{data[3]}}
+
+                                </span>
+
+                            </div>
+
+                            <div class="precent-reduce">
+                                {{data[12]}}% OFF
+                            </div>
+
+                        </div>
+                        {% endif %}
+                        {% if data[12] is none %}
+                        <div class="product-price">
+                            <div class="price">
+                                <span class="price-after-reduce" style="color: black;">${{data[3]}}</span>
+
+                            </div>
+
+                        </div> {% endif %}
+                        <div class="product-color">
+                            <div class="block-color" style="background: {{data[4]}};"></div>
+                        </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+        <div class="load-more" style="background-color: #f8f8f8; padding-bottom: 30px;border-top:1px solid #ddd;">
+            <div style="display: none;align-items: center;flex-direction: column;flex-basis: 25%; "
+                id="loadMoreSection">
+                <p class="text-show" style="font-size: 13px;">Showing <span id="productCount">8</span> of
+                    <span>${count}</span> products
+                </p>
+                <a style="width: 100%;"><button class="btn-load-more" onclick="loadMore1()">Load more</button></a>
+            </div>
+        </div>
+
+        <table id="table2">
+            <td>
+                <p style="font-size: 18px;">ALL NEW IN</p>
+                <p>Dive into our <b>New In</b> section and shop our edit of ladies’ on-trend clothing that’s updated
+                    daily.
+                    Dresses arrive in all styles and shapes, from peplums and bodycons, to midis and maxis. Do the
+                    slouch in
+                    the season's new structure - think shell tops and borrowed from the boyfriend bomber jackets in
+                    quirky
+                    club Tropicana prints. This season brights will take your style to new heights so shop our daily
+                    update
+                    of stylish separates, from shiny disco pants to skater skirts. Here you’ll find the latest fashion
+                    at
+                    your fingertips.</p>
+            </td>
+        </table>
+    </section>
+
+
+    <footer>
+
+        <div class="footerset">
+            <strong>CLASS ACTION SETTLEMENT; CHECK YOUR EMAIL FOR $10 GIFT CARDS PLUS COMPLIMENTARY SHIPPING ON ANY
+                PURCHASE. CLICK HERE FOR ADDITIONAL INFORMATION:</strong><br>
+            <a href="#" target="_blank">
+                <p>WWW.BOOHOOCAPRICINGSETTLEMENT.COM</p>
+            </a>
+        </div>
+        <div class="b-footer_top">
+            <img src="./accest/img/usa_payment_fooer_strip_mob_nozip-2111.svg" alt="">
+        </div>
+        <div class="footercontent">
+            <div class="linkk">
+                <strong>QUICK LINKS</strong>
+                <ul>
+                    <li>
+                        <a href="#">Track My Order</a>
+                        <a href="#" class="fa-solid fa-chevron-up fa-rotate-90"></a>
+                    </li>
+                    <li>
+                        <a href="#">Help</a>
+                        <a href="#" class="fa-solid fa-chevron-up fa-rotate-90"></a>
+                    </li>
+                    <li>
+                        <a href="#">Returns</a>
+                        <a href="#" class="fa-solid fa-chevron-up fa-rotate-90"></a>
+                    </li>
+                    <li>
+                        <a href="#">Shipping Infor</a>
+                        <a href="#" class="fa-solid fa-chevron-up fa-rotate-90"></a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="sub">
+                <div class="sub1">
+                    <strong>ABOUT US & MORE</strong>
+                    <a href="#">About boohoo</a>
+                    <a href="#">Size Guide</a>
+                    <a href="#">Get Exclusive Offers & Updates</a>
+                    <a href="#">Student Discount</a>
+                    <a href="#">Become an Affiliate</a>
+                </div>
+                <div class="sub1">
+                    <strong>INFORMATION</strong>
+                    <a href="#">Sustainability</a>
+                    <a href="#">Investor Relations</a>
+                    <a href="#">Boohoo Social Responsibility</a>
+                    <a href="#">Klarna</a>
+                    <a href="#">Careers</a>
+                    <a href="#">T&Cs</a>
+                    <a href="#">PayPal</a>
+                    <a href="#">Afterpay</a>
+                    <a href="#">Privacy Notice - Updated January 2023</a>
+                    <a href="#">About Cookies</a>
+
+                    <a href="#">Sitemap</a>
+
+                </div>
+
+            </div>
+            <div class="infor">
+                <div class="subscribe">
+                    <p>SUBSCRIBE! GET AN EXTRA 10% OFF & INSIDE INFO!*</p>
+                    <form onsubmit="return checkEmail()">
+                        <input type="email" id="email" name="email" placeholder="Enter your email">
+                        <div id="emailError" class="error"></div>
+                        <button type="submit">SUBSCRIBE</button>
+                    </form>
+                    <p>*Extra 10% discount sent via email to new subscribers only. By subscribing, you agree to receive
+                        marketing communications from boohoo by email. You can unsubscribe at any point.</p>
+                </div>
+                <div class="footer-app">
+                    <h1>Download The Boohoo App</h1>
+                    <p>Hear about exclusive offers, get early access to collabs & quicker checkout</p>
+                    <div class="get-app">
+                        <div class="scan">
+                            <p>SCAN TO DOWNLOAD</p>
+                            <div class="qr">
+                                <img src="./accest/img/BH_app_QR.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="icon-app">
+                            <div class="chplay"><img src="./accest/img/GOOGLE_ENG.png" alt=""></div>
+                            <div class="appstore"><img src="./accest/img/APPLE_ENG.png" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="country">
+                <strong>COUNTRY</strong>
+                <select name="country" id="countr">
+                    <option value="USA"> USA $</option>
+                    <option value="Canada">CAN $</option>
+                    <option value="Vietnam">VIE đ</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-copy">
+                <div class="copy">
+                    <p>COPYRIGHT © 2023 BOOHOO</p>
+                </div>
+                <ul class="nav-policy">
+                    <li class="access"><a href="#">Accessibility</a></li>
+                    <li class="terms"><a href="#">Terms & Conditions</a></li>
+                    <li class="privacy-policy"><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            var currentURL = window.location.href;
+            if (currentURL.includes('/women')) {
+                document.getElementById('loadMoreSection').style.display = 'flex';
+            }
+        });
+    </script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script>
+        var shouldLoadMore = true;
+
+        function loadMore1() {
+            if (!shouldLoadMore) {
+                return; // Nếu không nên tải thêm sản phẩm, thoát khỏi hàm
+            }
+
+            var amount = document.getElementsByClassName("product").length;
+
+            $.ajax({
+                url: "/web/load",
+                type: "get",
+                data: {
+                    exits: amount
+                },
+                success: function (data) {
+                    var row = document.getElementById("content");
+                    row.innerHTML += data;
+
+                    var productCount = document.getElementById("productCount");
+                    var currentCount = parseInt(productCount.innerText);
+
+                    // Kiểm tra số lượng sản phẩm mới thêm vào
+                    var newProductCount = $(data).filter('.product').length;
+
+                    if (newProductCount === 0) {
+                        shouldLoadMore = false; // Nếu không có sản phẩm mới nữa, không tải thêm
+                    } else {
+                        var newCount = currentCount + newProductCount; // Tổng số lượng sản phẩm hiện tại + số lượng sản phẩm mới
+                        productCount.innerText = newCount;
+                    }
+                }
+            });
+        }
+
+    </script> -->
+    <script>
+        function showpass(event) {
+            event.preventDefault();
+            var passwordField = document.getElementById("passwordField");
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+    </script>
+
+
+    <script>
+        function setCheck(obj) {
+            document.getElementById('f1').submit();
+        }
+        function setCheck1(obj) {
+            document.getElementById('f2').submit();
+        }
+
+    </script>
+
+    <script src="../static/js/main.js"></script>
+
+</body>
+
+</html>

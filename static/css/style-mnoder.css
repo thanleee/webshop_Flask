@@ -1,0 +1,145 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+  }
+  
+  table {
+    width: 100%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+  }
+  
+  td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    
+  }
+  
+  thead th {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  a.button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  a.button:hover {
+    background-color: #0056b3;
+  }
+  
+  a.delete-button {
+    background-color: #dc3545;
+  }
+  
+  a.edit-button {
+    background-color: #28a745;
+  }
+  a.xoa-button{
+     background-color:#FFA500  
+  }
+  form {
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="number"] {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  button[type="submit"],
+  button[type="reset"] {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover,
+  button[type="reset"]:hover {
+    background-color: #0056b3;
+  }
+  
+  button.add-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button.add-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Product table */
+  .product-table {
+    width: 100%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+  }
+  
+  .product-row:nth-child(even) {
+    text-align: center;
+    background-color: #f2f2f2;
+  }
+  
+  /* Edit and delete buttons */
+  .button.edit-button {
+    background-color: #28a745;
+  }
+  
+  .button.delete-button {
+    background-color: #dc3545;
+  }
+  
+  .product-row td:last-child {
+    text-align: center;
+  }
+  
+  .product-row img {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: contain;
+  }
+  

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styleusermanage.css">
+    <link rel=" icon" href="./accest/img/logoboohoo.png">
+    <title>User Management</title>
+    <style>
+        thead th {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding-top: 7px;
+            padding-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body style="background-color: #f8f8f8;">
+    {% include "admin/headerAdmin.html" %}
+    <!--    <h3 style="text-align: center; font-size:1.8rem "><a >Quản lý người dùng</a></h3>-->
+    <table class="product-table">
+        <thead>
+            <tr>
+                <th>customer_id</th>
+                <th>first_name</th>
+                <th>last_name</th>
+                <th>gender</th>
+                <th>birthday</th>
+                <th>email_address</th>
+                <th>contact</th>
+                <th>role</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for data in customer %}
+            <tr class="product-row">
+                <td>{{data[0]}}</td>
+                <td>{{data[1]}}</td>
+                <td>{{data[2]}}</td>
+                <td>{{data[3]}}</td>
+                <td>{{data[4]}}</td>
+                <td>{{data[5]}}</td>
+
+                <td>{{data[8]}}</td>
+                <td>{{data[9]}}</td>
+                <td>
+                    <a href="permissionsuser/{{data[0]}}" class="button edit-button">Cấp quyền</a>
+                    <a href="deleteus/{{data[0]}}" class="button delete-button">Delete</a>
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+
+    <script>
+        console.log("Xoá");
+        $(".delete-button").click(function (event) {
+            event.preventDefault();
+            if (confirm("Bạn có chắc chắn muốn xoá hay không?")) {
+                var link = $(this).attr('href');
+                window.location = link;
+            } else {
+                console.log("Huỷ");
+            }
+        });
+    </script>
+</body>
+
+</html>
