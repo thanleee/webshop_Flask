@@ -994,5 +994,5 @@ def deletecategory(id):
     return redirect('/categorymanage')    
 if __name__ == '__main__':
    
-    app.secret_key = 'my_super_secret_key_171232'
+    app.secret_key = ''
     app.run(debug=True)
